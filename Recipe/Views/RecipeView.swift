@@ -9,17 +9,16 @@ import SwiftUI
 
 struct RecipeView: View {
     
-    @StateObject var recipeViewModel: RecipeViewModel = RecipeViewModel()
+    var recipeViewModel: RecipeViewModel = RecipeViewModel()
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             List(self.recipeViewModel.recipeModels) { item in
                 NavigationLink(destination: {
                     ShowRecipeView(
                         theRecipe: item.recipe,
                         imageName: item.recipeImage,
                         recipeURL: item.recipeURL)
-                    .navigationBarTitle("", displayMode: .inline)
                 }, label: {
                     ListItemView(
                         name: item.name,
